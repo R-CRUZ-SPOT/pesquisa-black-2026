@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pesquisa Roteiro Black 2026 – Epson</title>
+<style>
+:root{
+  --bg:#f2f4f9;--card:#fff;--tx:#14213d;--mut:#667089;--bd:#d8deeb;
+  --pri:#003399;--pri-t:#e7eeff;--onp:#fff;
+  --good:#17803a;--good-t:#e3f5ea;--mid:#a86400;--mid-t:#fff1d6;--bad:#c62828;--bad-t:#fde8e8;
+  --r:14px;color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0e1320;--card:#182033;--tx:#eef1f8;--mut:#9ba5bd;--bd:#2c3650;
+  --pri:#7fa6ff;--pri-t:#22305a;--onp:#0e1320;
+  --good:#5fd484;--good-t:#16392a;--mid:#f2b24a;--mid-t:#3d2f12;--bad:#ff8080;--bad-t:#401c1f;color-scheme:dark}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+
+/* Cabeçalho */
+header{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--bd);padding:calc(10px + env(safe-area-inset-top,0px)) 16px 0}
+.wrap{max-width:640px;margin:0 auto}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font:900 22px/1 "Arial Black",Arial,sans-serif;letter-spacing:2px;color:var(--pri)}
+.ttl{font-size:12px;color:var(--mut);text-align:right;line-height:1.25}.ttl b{display:block;color:var(--tx);font-size:13px}
+.tabs{display:flex;gap:4px;margin-top:10px}
+.tabs button{flex:1;background:none;border:0;border-bottom:3px solid transparent;padding:10px 4px;font-weight:700;color:var(--mut)}
+.tabs button[aria-selected=true]{color:var(--pri);border-color:var(--pri)}
+.cnt{display:inline-block;min-width:22px;padding:1px 6px;margin-left:4px;border-radius:11px;background:var(--pri-t);color:var(--pri);font-size:12px}
+
+/* Etapas */
+.steps{display:flex;align-items:center;gap:6px;margin:14px 0 4px;font-size:12px;color:var(--mut)}
+.steps i{flex:1;height:3px;background:var(--bd);border-radius:2px}
+.steps span{display:flex;align-items:center;gap:6px;font-weight:600}
+.steps em{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--bd);color:var(--mut);font-size:12px}
+.steps .on{color:var(--tx)}.steps .on em{background:var(--pri);color:var(--onp)}
+.steps .ok em{background:var(--good);color:#fff}
+.steps i.ok{background:var(--good)}
+
+main{max-width:640px;margin:0 auto;padding:14px 16px calc(110px + env(safe-area-inset-bottom,0px))}
+h1{font-size:20px;margin:6px 0 2px}h2{font-size:16px;margin:0}
+.sub{color:var(--mut);font-size:14px;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:14px;margin-bottom:12px}
+label.l,.lg{display:block;font-size:13px;font-weight:700;color:var(--mut);margin-bottom:6px}
+input[type=text],select,textarea{width:100%;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);font-size:16px}
+textarea{resize:vertical;min-height:72px}
+.row{display:grid;grid-template-columns:1fr 92px;gap:8px}
+.gap{margin-top:10px}
+
+/* Modo */
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--bd);padding:4px;border-radius:12px;margin-bottom:12px}
+.seg button{border:0;background:none;padding:11px 6px;font-size:15px;border-radius:9px;font-weight:700;color:var(--mut)}
+.seg button[aria-pressed=true]{background:var(--card);color:var(--pri);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+
+/* Lista de lojas */
+.filters{display:grid;grid-template-columns:1fr 96px;gap:8px;margin-bottom:8px}
+.prog{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin:2px 0 6px}
+.pbar{height:6px;background:var(--bd);border-radius:3px;overflow:hidden;margin-bottom:10px}.pbar i{display:block;height:100%;background:var(--good);transition:width .3s}
+.store{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:8px}
+.store .n{flex:1;min-width:0}.store b{display:block;font-size:15px}.store small{color:var(--mut);font-size:13px}
+.store[aria-pressed=true]{border-color:var(--pri);background:var(--pri-t)}
+.radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--bd);flex:none;display:grid;place-items:center}
+.store[aria-pressed=true] .radio{border-color:var(--pri);background:var(--pri)}
+.store[aria-pressed=true] .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--onp)}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--good-t);color:var(--good);white-space:nowrap}
+.badge.out{background:var(--mid-t);color:var(--mid)}
+.empty{text-align:center;color:var(--mut);padding:28px 8px;font-size:14px}
+.note{font-size:13px;color:var(--mut);margin:8px 2px}
+.warn{background:var(--mid-t);color:var(--mid);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;margin-bottom:12px}
+
+/* Perguntas */
+.sum{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.sum b{display:block}.sum small{color:var(--mut)}
+.link{background:none;border:0;color:var(--pri);font-weight:700;padding:4px 0;white-space:nowrap}
+.q{border:0;padding:0;margin:0 0 20px}
+.q legend{padding:0;font-weight:700;font-size:16px}
+.q .hint{font-size:13px;color:var(--mut);margin:2px 0 10px}
+.q.miss legend::after{content:" *";color:var(--bad)}
+.opts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px}
+.opt{border:1.5px solid var(--bd);background:var(--bg);border-radius:12px;padding:14px 4px;font-weight:700;font-size:15px;min-height:52px}
+.opt[aria-pressed=true].good{background:var(--good);border-color:var(--good);color:#fff}
+.opt[aria-pressed=true].mid{background:var(--mid);border-color:var(--mid);color:#fff}
+.opt[aria-pressed=true].bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt[aria-pressed=true].neu{background:var(--pri);border-color:var(--pri);color:var(--onp)}
+
+/* Barra de ações */
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:10}
+.bar .wrap{display:flex;gap:8px}
+.btn{flex:1;padding:14px;border-radius:12px;border:1.5px solid var(--pri);background:var(--pri);color:var(--onp);font-weight:700;font-size:16px}
+.btn.sec{background:transparent;color:var(--pri)}
+.btn.fix{flex:0 0 38%}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.danger{border-color:var(--bad);color:var(--bad);background:transparent}
+
+/* Concluído */
+.done{text-align:center;padding:30px 14px}
+.done .ck{width:72px;height:72px;border-radius:50%;background:var(--good);color:#fff;display:grid;place-items:center;font-size:38px;margin:0 auto 14px}
+.done .stack{display:grid;gap:8px;margin-top:20px}
+
+/* Visitas */
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.kp div{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:12px 4px;font-size:12px;color:var(--mut)}
+.kp b{display:block;font-size:24px;color:var(--tx)}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.tools .btn{padding:12px;font-size:14px}
+.v h2{font-size:15px}.v .m{font-size:13px;color:var(--mut);margin:2px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:700;padding:3px 9px;border-radius:10px;background:var(--pri-t);color:var(--pri)}
+.chip.good{background:var(--good-t);color:var(--good)}.chip.mid{background:var(--mid-t);color:var(--mid)}.chip.bad{background:var(--bad-t);color:var(--bad)}
+.v .ob{font-size:13px;margin-top:8px;padding:8px 10px;background:var(--bg);border-radius:8px}
+.acts{display:flex;gap:8px;margin-top:10px}.acts button{flex:1;padding:10px;border-radius:10px;font-weight:700;font-size:14px;border:1px solid var(--bd);background:transparent}
+.acts .del{color:var(--bad);border-color:var(--bad)}
+.sent{font-size:11px;color:var(--mut)}
+#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:20px;font-size:14px;display:none;z-index:20;max-width:90%}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo" aria-label="EPSON">EPSON</div>
+      <div class="ttl"><b>Pesquisa Roteiro Black 2026</b>Black Friday · 27 e 28/11</div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-nova" data-a="tab" data-v="nova" aria-selected="true">Nova visita</button>
+      <button role="tab" id="tab-vis" data-a="tab" data-v="vis" aria-selected="false">Minhas visitas <span class="cnt" id="cnt">0</span></button>
+    </div>
+  </div>
+</header>
+<main id="app"></main>
+<div class="bar" id="bar"><div class="wrap" id="barin"></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+/* =====================================================================
+   CONFIGURAÇÃO
+   ===================================================================== */
+var CONFIG = {
+  // Opcional: URL (ex.: Google Apps Script / API) que recebe cada visita via POST (JSON).
+  // Se ficar vazio, as visitas ficam salvas no aparelho e são exportadas em CSV.
+  endpoint: "https://script.google.com/macros/s/AKfycbyEoPW02WP85hqYRN2CwhQCuT37tkaCmNHcRBnnHPKGpsAaCDJQ3y8aYF7dny7HXc36/exec"
+};
+
+/* =====================================================================
+   LOJAS DO ROTEIRO BLACK  (EXEMPLO – substituir pela lista oficial)
+   Formato: [id, UF, Cidade, Rede, Loja]
+   ===================================================================== */
+var STORES = [
+  ["L001","SP","SÃO PAULO","CARREFOUR","CARREFOUR - ANCHIETA"],
+  ["L002","RJ","RIO DE JANEIRO","MAGAZINE LUIZA","MAGAZINE LUIZA - BARRA SHOPPING"],
+  ["L003","GO","GOIÂNIA","FUJIOKA","FUJIOKA - GOIÂNIA SHOPPING"],
+  ["L004","RN","NATAL","MIRANDA","MIRANDA - MIDWAY MALL"],
+  ["L005","BA","SALVADOR","KALUNGA","KALUNGA - SHOPPING BELA VISTA"]
+].map(function(r){return{id:r[0],uf:r[1],cidade:r[2],rede:r[3],loja:r[4]}});
+
+/* =====================================================================
+   PERGUNTAS  (tone: good | mid | bad | neu → cor do botão selecionado)
+   ===================================================================== */
+var QS = [
+  {k:"preco", s:"Precificada", t:"A Epson está precificada?", h:"Existe preço visível nos produtos Epson.",
+   o:[["Sim","good"],["Não","bad"]]},
+  {k:"expo",  s:"Exposição", t:"Como está a exposição de Black Friday?", h:"Destaque, ponta de gôndola, comunicação visual da campanha.",
+   o:[["Ótima","good"],["Boa","neu"],["Regular","bad"]]},
+  {k:"conc",  s:"Concorrência", t:"Como está a Epson frente à concorrência?", h:"Preço e visibilidade comparados às demais marcas.",
+   o:[["Melhor","good"],["Igual","mid"],["Inferior","bad"]]}
+];
+
+/* =====================================================================
+   ESTADO E ARMAZENAMENTO
+   ===================================================================== */
+var KEY = "epson_black_2026_v3";
+function lsGet(k, d){ try{ var v = localStorage.getItem(k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+var VISITS  = lsGet(KEY+"_visits", []);
+var VISITOR = lsGet(KEY+"_visitor", "");
+var S = fresh();
+S.tab = "nova";
+
+function fresh(){
+  return {tab:S?S.tab:"nova", step:1, mode:"roteiro", sel:null, out:{n:"",r:"",c:"",u:""}, ans:{}, obs:"", edit:null, q:"", uf:"", last:null, showMiss:false};
+}
+
+/* =====================================================================
+   UTILITÁRIOS
+   ===================================================================== */
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]}); }
+function norm(s){ return String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase(); }
+function fmt(ts){ return new Date(ts).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}); }
+function storeById(id){ for(var i=0;i<STORES.length;i++) if(STORES[i].id===id) return STORES[i]; return null; }
+function visitedIds(){ var m={}; VISITS.forEach(function(v){ if(v.rota) m[v.storeId]=(m[v.storeId]||0)+1; }); return m; }
+function tone(k, val){ for(var i=0;i<QS.length;i++) if(QS[i].k===k) for(var j=0;j<QS[i].o.length;j++) if(QS[i].o[j][0]===val) return QS[i].o[j][1]; return "neu"; }
+function toast(t){ var m=$("toast"); m.textContent=t; m.style.display="block"; clearTimeout(toast.t); toast.t=setTimeout(function(){m.style.display="none"},2400); }
+function keepScroll(fn){ var y=window.scrollY; fn(); window.scrollTo(0,y); }
+
+function canNext(){
+  if(!VISITOR.trim()) return false;
+  if(S.mode==="roteiro") return !!S.sel;
+  return !!(S.out.n.trim() && S.out.c.trim() && S.out.u);
+}
+function missing(){ return QS.filter(function(q){ return !S.ans[q.k]; }); }
+
+/* =====================================================================
+   RENDER
+   ===================================================================== */
+function render(){
+  $("cnt").textContent = VISITS.length;
+  $("tab-nova").setAttribute("aria-selected", S.tab==="nova");
+  $("tab-vis").setAttribute("aria-selected", S.tab==="vis");
+  if(S.tab==="vis") return renderVisits();
+  if(S.step===1) return renderStep1();
+  if(S.step===2) return renderStep2();
+  renderDone();
+}
+
+function stepper(n){
+  function st(i,t){ return '<span class="'+(n===i?"on":n>i?"ok":"")+'"><em>'+(n>i?"✓":i)+'</em>'+t+'</span>'; }
+  return '<div class="steps">'+st(1,"Loja")+'<i class="'+(n>1?"ok":"")+'"></i>'+st(2,"Avaliação")+'<i class="'+(n>2?"ok":"")+'"></i>'+st(3,"Pronto")+'</div>';
+}
+
+/* ---- Etapa 1: escolher a loja ---- */
+function renderStep1(){
+  var v = visitedIds(), done = Object.keys(v).length, tot = STORES.length;
+  var h = stepper(1)+'<h1>Qual loja você está visitando?</h1><p class="sub">Informe a loja para começar a avaliação.</p>';
+  h += '<div class="card"><label class="l" for="vn">Seu nome</label><input type="text" id="vn" autocomplete="name" placeholder="Digite seu nome" value="'+esc(VISITOR)+'"></div>';
+  h += '<div class="seg" role="group" aria-label="Tipo de loja">'
+    + '<button data-a="mode" data-v="roteiro" aria-pressed="'+(S.mode==="roteiro")+'">Loja do roteiro</button>'
+    + '<button data-a="mode" data-v="fora" aria-pressed="'+(S.mode==="fora")+'">Fora do roteiro</button></div>';
+  if(S.mode==="roteiro"){
+    var ufs = []; STORES.forEach(function(s){ if(ufs.indexOf(s.uf)<0) ufs.push(s.uf); }); ufs.sort();
+    h += '<div class="filters"><input type="text" id="busca" placeholder="Buscar loja ou cidade" value="'+esc(S.q)+'" aria-label="Buscar loja">'
+      + '<select id="ufsel" aria-label="Filtrar por UF"><option value="">UF</option>'+ufs.map(function(u){return '<option'+(S.uf===u?" selected":"")+'>'+u+'</option>'}).join("")+'</select></div>';
+    h += '<div class="prog"><span>Roteiro Black</span><span>'+done+' de '+tot+' lojas visitadas</span></div><div class="pbar"><i style="width:'+(tot?done/tot*100:0)+'%"></i></div>';
+    h += '<div id="lista"></div>';
+  } else {
+    h += '<div class="card"><p class="sub" style="margin-bottom:12px">Está em uma loja que não aparece no roteiro? Cadastre aqui e responda normalmente.</p>'
+      + '<label class="l" for="on">Nome da loja *</label><input type="text" id="on" placeholder="Ex.: Kabum - Shopping Center Norte" value="'+esc(S.out.n)+'">'
+      + '<div class="gap"><label class="l" for="or">Rede (opcional)</label><input type="text" id="or" placeholder="Ex.: Kabum" value="'+esc(S.out.r)+'"></div>'
+      + '<div class="row gap"><div><label class="l" for="oc">Cidade *</label><input type="text" id="oc" value="'+esc(S.out.c)+'"></div>'
+      + '<div><label class="l" for="ou">UF *</label><select id="ou"><option value="">UF</option>'+UFS.map(function(u){return '<option'+(S.out.u===u?" selected":"")+'>'+u+'</option>'}).join("")+'</select></div></div></div>';
+  }
+  $("app").innerHTML = h;
+  if(S.mode==="roteiro") renderList();
+  bar1();
+}
+var UFS = "AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO".split(" ");
+
+function renderList(){
+  var q = norm(S.q), v = visitedIds();
+  var L = STORES.filter(function(s){
+    return (!S.uf || s.uf===S.uf) && (!q || norm(s.loja+" "+s.rede+" "+s.cidade+" "+s.uf).indexOf(q)>=0);
+  }).sort(function(a,b){ return (a.uf+a.cidade+a.loja).localeCompare(b.uf+b.cidade+b.loja); });
+  var h = L.slice(0,40).map(function(s){
+    return '<button class="store" data-a="pick" data-id="'+s.id+'" aria-pressed="'+(S.sel===s.id)+'"><span class="radio"></span>'
+      + '<span class="n"><b>'+esc(s.loja)+'</b><small>'+esc(s.rede)+' · '+esc(s.cidade)+'/'+s.uf+'</small></span>'
+      + (v[s.id]?'<span class="badge">✓ visitada</span>':'')+'</button>';
+  }).join("");
+  if(L.length>40) h += '<div class="note">Mostrando 40 de '+L.length+' lojas. Use a busca para refinar.</div>';
+  if(!L.length) h = '<div class="empty">Nenhuma loja encontrada.<br>Se você está em outra loja, use <b>Fora do roteiro</b>.</div>';
+  else h += '<div class="note">Não achou a loja? Toque em <b>Fora do roteiro</b>.</div>';
+  $("lista").innerHTML = h;
+}
+
+function bar1(){
+  $("bar").style.display = "";
+  $("barin").innerHTML = '<button class="btn" id="go" data-a="next">Continuar</button>';
+  $("go").disabled = !canNext();
+}
+
+/* ---- Etapa 2: perguntas ---- */
+function renderStep2(){
+  var s = currentStore();
+  var h = stepper(2)+'<h1>Avaliação da loja</h1>';
+  h += '<div class="card"><div class="sum"><div><b>'+esc(s.loja)+'</b><small>'+(s.rede?esc(s.rede)+' · ':'')+esc(s.cidade)+'/'+esc(s.uf)+'</small>'
+    + (S.mode==="fora"?'<div style="margin-top:6px"><span class="badge out">Fora do roteiro</span></div>':'')
+    + '</div><button class="link" data-a="back">Trocar loja</button></div></div>';
+  if(S.edit) h += '<div class="warn">Você está editando uma visita já registrada.</div>';
+  QS.forEach(function(q,i){
+    var miss = S.showMiss && !S.ans[q.k];
+    h += '<fieldset class="q'+(miss?" miss":"")+'"><legend>'+(i+1)+'. '+q.t+'</legend><div class="hint">'+q.h+'</div><div class="opts">'
+      + q.o.map(function(o){ return '<button class="opt '+o[1]+'" data-a="ans" data-q="'+q.k+'" data-v="'+o[0]+'" aria-pressed="'+(S.ans[q.k]===o[0])+'">'+o[0]+'</button>'; }).join("")
+      + '</div></fieldset>';
+  });
+  h += '<div class="card"><label class="l" for="obs">Observação (opcional)</label><textarea id="obs" placeholder="Algo importante que viu na loja?">'+esc(S.obs)+'</textarea></div>';
+  $("app").innerHTML = h;
+  $("bar").style.display = "";
+  $("barin").innerHTML = '<button class="btn sec fix" data-a="back">Voltar</button><button class="btn" id="sv" data-a="save">'+(S.edit?"Salvar alterações":"Salvar visita")+'</button>';
+  $("sv").disabled = missing().length>0;
+}
+
+function currentStore(){
+  if(S.mode==="roteiro") return storeById(S.sel) || {loja:"",rede:"",cidade:"",uf:""};
+  return {loja:S.out.n.trim(), rede:S.out.r.trim(), cidade:S.out.c.trim(), uf:S.out.u};
+}
+
+/* ---- Etapa 3: concluído ---- */
+function renderDone(){
+  var l = S.last, n = VISITS.length, v = Object.keys(visitedIds()).length;
+  $("app").innerHTML = stepper(3)
+    + '<div class="card done"><div class="ck">✓</div><h1>Visita registrada!</h1><p class="sub" style="margin:0">'+esc(l.loja)+'<br>'+esc(l.cidade)+'/'+esc(l.uf)+'</p>'
+    + '<p class="note">Você já registrou '+n+' visita'+(n>1?"s":"")+' · '+v+' de '+STORES.length+' lojas do roteiro.</p>'
+    + '<div class="stack"><button class="btn" data-a="again">Registrar outra loja</button><button class="btn sec" data-a="tab" data-v="vis">Ver minhas visitas</button></div></div>';
+  $("bar").style.display = "none";
+}
+
+/* ---- Minhas visitas ---- */
+function renderVisits(){
+  $("bar").style.display = "none";
+  var n = VISITS.length, rota = VISITS.filter(function(v){return v.rota}).length;
+  var h = '<h1>Minhas visitas</h1><p class="sub">Registros feitos neste aparelho.</p>'
+    + '<div class="kp"><div><b>'+n+'</b>visitas</div><div><b>'+rota+'</b>no roteiro</div><div><b>'+(n-rota)+'</b>fora do roteiro</div></div>';
+  if(n){
+    h += '<div class="tools"><button class="btn" data-a="csv">Baixar CSV</button><button class="btn sec" data-a="share">Compartilhar / copiar</button></div>';
+    if(CONFIG.endpoint){
+      var pend = VISITS.filter(function(v){return !v.sent}).length;
+      h += '<div class="note">'+(pend?pend+' visita(s) aguardando envio. <button class="link" data-a="flush">Enviar agora</button>':'Todas as visitas foram enviadas.')+'</div>';
+    }
+  }
+  if(!n) h += '<div class="empty">Nenhuma visita registrada ainda.<br><button class="link" data-a="tab" data-v="nova">Registrar a primeira</button></div>';
+  VISITS.slice().sort(function(a,b){return b.ts-a.ts}).forEach(function(v){
+    h += '<div class="card v"><h2>'+esc(v.loja)+'</h2><div class="m">'+(v.rede?esc(v.rede)+' · ':'')+esc(v.cidade)+'/'+esc(v.uf)+' · '+fmt(v.ts)+' '
+      + (v.rota?'':'<span class="badge out">Fora do roteiro</span>')+'</div><div class="chips">'
+      + QS.map(function(q){ var a=v.ans[q.k]; return a?'<span class="chip '+tone(q.k,a)+'">'+esc(q.s)+': '+esc(a)+'</span>':""; }).join("")
+      + '</div>'+(v.obs?'<div class="ob">'+esc(v.obs)+'</div>':'')
+      + '<div class="acts"><button data-a="edit" data-id="'+v.id+'">Editar</button><button class="del" data-a="del" data-id="'+v.id+'">Excluir</button></div></div>';
+  });
+  $("app").innerHTML = h;
+}
+
+/* =====================================================================
+   AÇÕES
+   ===================================================================== */
+document.addEventListener("click", function(e){
+  var b = e.target.closest("[data-a]"); if(!b || b.disabled) return;
+  var a = b.dataset.a;
+  if(a==="tab"){ S.tab=b.dataset.v; if(S.tab==="nova" && S.step===3){ var t=S.tab; S=fresh(); S.tab=t; } render(); window.scrollTo(0,0); }
+  else if(a==="mode"){ S.mode=b.dataset.v; render(); }
+  else if(a==="pick"){ S.sel = (S.sel===b.dataset.id)?null:b.dataset.id; keepScroll(renderList); $("go").disabled=!canNext(); }
+  else if(a==="next"){ S.step=2; S.showMiss=false; render(); window.scrollTo(0,0); }
+  else if(a==="back"){ S.step=1; S.edit=null; render(); window.scrollTo(0,0); }
+  else if(a==="ans"){ var k=b.dataset.q; S.ans[k]=(S.ans[k]===b.dataset.v)?"":b.dataset.v; keepScroll(render); }
+  else if(a==="save"){ save(); }
+  else if(a==="again"){ var t2=S.tab; S=fresh(); S.tab=t2; render(); window.scrollTo(0,0); }
+  else if(a==="edit"){ edit(b.dataset.id); }
+  else if(a==="del"){
+    if(b.dataset.arm){ VISITS=VISITS.filter(function(v){return v.id!==b.dataset.id}); lsSet(KEY+"_visits",VISITS); render(); toast("Visita excluída"); }
+    else{ b.dataset.arm=1; b.textContent="Toque de novo para excluir"; setTimeout(function(){ if(b.isConnected){ delete b.dataset.arm; b.textContent="Excluir"; } },3000); }
+  }
+  else if(a==="csv"){ downloadCsv(); }
+  else if(a==="share"){ shareCsv(); }
+  else if(a==="flush"){ flush(true); }
+});
+
+document.addEventListener("input", function(e){
+  var t=e.target, id=t.id;
+  if(id==="vn"){ VISITOR=t.value; lsSet(KEY+"_visitor",VISITOR); $("go").disabled=!canNext(); }
+  else if(id==="busca"){ S.q=t.value; renderList(); }
+  else if(id==="obs"){ S.obs=t.value; }
+  else if(id==="on"||id==="or"||id==="oc"){ S.out[{on:"n",or:"r",oc:"c"}[id]]=t.value; $("go").disabled=!canNext(); }
+});
+document.addEventListener("change", function(e){
+  var t=e.target;
+  if(t.id==="ufsel"){ S.uf=t.value; renderList(); }
+  else if(t.id==="ou"){ S.out.u=t.value; $("go").disabled=!canNext(); }
+});
+
+function save(){
+  if(missing().length){ S.showMiss=true; keepScroll(render); toast("Responda todas as perguntas"); return; }
+  var s = currentStore();
+  var rec = {
+    id: S.edit || (Date.now().toString(36)+Math.random().toString(36).slice(2,6)),
+    ts: Date.now(), visitor: VISITOR.trim(), rota: S.mode==="roteiro", storeId: S.mode==="roteiro"?S.sel:"",
+    uf: s.uf, cidade: s.cidade, rede: s.rede, loja: s.loja,
+    ans: {preco:S.ans.preco, expo:S.ans.expo, conc:S.ans.conc}, obs: S.obs.trim(), sent:false
+  };
+  if(S.edit){
+    VISITS = VISITS.map(function(v){ if(v.id!==S.edit) return v; rec.ts=v.ts; return rec; });
+  } else VISITS.push(rec);
+  lsSet(KEY+"_visits", VISITS);
+  S.last = rec; S.step = 3; S.edit = null;
+  render(); window.scrollTo(0,0);
+  flush(false);
+}
+
+function edit(id){
+  var v = VISITS.filter(function(x){return x.id===id})[0]; if(!v) return;
+  S = fresh(); S.tab="nova"; S.step=2; S.edit=id; S.mode=v.rota?"roteiro":"fora";
+  if(v.rota) S.sel=v.storeId; else S.out={n:v.loja,r:v.rede,c:v.cidade,u:v.uf};
+  S.ans={preco:v.ans.preco,expo:v.ans.expo,conc:v.ans.conc}; S.obs=v.obs||"";
+  render(); window.scrollTo(0,0);
+}
+
+/* =====================================================================
+   EXPORTAÇÃO E ENVIO
+   ===================================================================== */
+function csv(){
+  var head = ["DATA_HORA","VISITANTE","NO_ROTEIRO","UF","CIDADE","REDE","LOJA","PRECIFICADA","EXPOSICAO_BLACK","CONCORRENCIA_X_EPSON","OBSERVACAO"];
+  var lines = [head.join(";")];
+  VISITS.slice().sort(function(a,b){return a.ts-b.ts}).forEach(function(v){
+    lines.push([new Date(v.ts).toLocaleString("pt-BR"), v.visitor, v.rota?"Sim":"Não", v.uf, v.cidade, v.rede, v.loja, v.ans.preco, v.ans.expo, v.ans.conc, v.obs]
+      .map(function(x){ return '"'+String(x==null?"":x).replace(/"/g,'""').replace(/[\r\n]+/g," ")+'"'; }).join(";"));
+  });
+  return lines.join("\r\n");
+}
+function downloadCsv(){
+  try{
+    var blob = new Blob(["﻿"+csv()],{type:"text/csv;charset=utf-8"});
+    var a = document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="pesquisa_black_2026_"+(VISITOR.trim().replace(/\s+/g,"_")||"visitas")+".csv";
+    document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },500);
+  }catch(e){ shareCsv(); }
+}
+function shareCsv(){
+  var t = csv();
+  if(navigator.share){ navigator.share({title:"Pesquisa Roteiro Black 2026", text:t}).catch(function(){}); }
+  else if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ toast("Visitas copiadas"); },function(){ toast("Não foi possível copiar"); }); }
+  else toast("Compartilhamento indisponível neste navegador");
+}
+function flush(manual){
+  if(!CONFIG.endpoint) return;
+  var pend = VISITS.filter(function(v){return !v.sent});
+  if(!pend.length) return;
+  Promise.all(pend.map(function(v){
+    return fetch(CONFIG.endpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(v)})
+      .then(function(r){ if(!r.ok) throw 0; v.sent=true; });
+  })).then(function(){ if(manual) toast("Visitas enviadas"); },function(){ if(manual) toast("Falha no envio. Tente novamente."); })
+  .then(function(){ lsSet(KEY+"_visits",VISITS); if(S.tab==="vis") render(); });
+}
+
+window.addEventListener("online", function(){ flush(false); });
+render();
+flush(false);
+</script>
+</body>
+</html>
